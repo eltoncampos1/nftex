@@ -2,6 +2,8 @@ defmodule Nftex.Art do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @required [:artist_name, :description, :price, :hash]
+
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "arts" do
@@ -14,9 +16,9 @@ defmodule Nftex.Art do
   end
 
   @doc false
-  def changeset(art, attrs) do
-    art
-    |> cast(attrs, [:artist_name, :description, :price, :hash])
-    |> validate_required([:artist_name, :description, :price, :hash])
+  def changeset(attrs) do
+    %__MODULE__{}
+    |> cast(attrs, @required)
+    |> validate_required(@required)
   end
 end
