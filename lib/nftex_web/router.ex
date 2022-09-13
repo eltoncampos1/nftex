@@ -14,6 +14,8 @@ defmodule NftexWeb.Router do
 
   scope "/api", NftexWeb do
     pipe_through :api
+
+    get "/arts", ArtsController, :index
   end
 
   # Enables LiveDashboard only for development
