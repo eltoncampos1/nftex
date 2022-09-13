@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    postgres:
+        image: postgres:11-alpine
+        ports:
+            - 5432:5432
+        volumes:
+            - pg:/data/postgres
+        environment:
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+            POSTGRES_DB: nftex_dev
+volumes:
+    pg:
+        driver: local
